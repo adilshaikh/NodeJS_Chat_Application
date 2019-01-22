@@ -21,14 +21,15 @@ io.on('connection', (socket)=>{    //.on('event', callbackFunction)
         console.log('Client Disconnected')
     })
 
-    socket.emit('newMessage', {
-        from: 'Dranzer',
-        text: 'Hey! I am from Server',
-        createdAt: new Date().getTime()
-    })
+   
 
     socket.on('createMessage',function(message){
         console.log('Created Message', message)
+        io.emit('newMessage',{
+             from: message.from,
+             text: message.text,
+             createdAt: new Date().getTime()
+        })
     })
 
     
