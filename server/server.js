@@ -18,8 +18,20 @@ io.on('connection', (socket)=>{    //.on('event', callbackFunction)
     console.log('New User Connected')
 
     socket.on('disconnect', ()=>{
-        console.log('Client Disconnected.')
+        console.log('Client Disconnected')
     })
+
+    socket.emit('newMessage', {
+        from: 'Dranzer',
+        text: 'Hey! I am from Server',
+        createdAt: new Date().getTime()
+    })
+
+    socket.on('createMessage',function(message){
+        console.log('Created Message', message)
+    })
+
+    
 })
 
 server.listen(port, ()=>{
