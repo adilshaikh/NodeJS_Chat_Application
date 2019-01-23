@@ -13,12 +13,7 @@ socket.on('newMessage', function(message) {
     jQuery('#messages').append(li)
 })
 
-// socket.emit('createMessage', {
-//     from: 'Pikachu',
-//     text: 'Hey this is from Pikachu-Client'
-// }, function(data) {
-//     console.log('Got It', data)
-// })
+
 
 jQuery('#message-form').on('submit',function(e){
     e.preventDefault();
@@ -31,5 +26,29 @@ jQuery('#message-form').on('submit',function(e){
     })
 })
 
+var locationButton = jQuery('#send-location');
+locationButton.on('click', function(){
+    if(!navigator.geolocation){
+        return alert('GeoLocation is not supported by the browser')
+    }
 
+    navigator.geolocation.getCurrentPosition(function(position){
+        socket.emit('createLocation', {
+            latitude : position.coords.latitude,
+            longitude: position.coords.longitude
+        })
+    }, 
+    function(){
+        alert('Unable to fetch the geocode Location')
+    })
+})
+
+socket.on('newLocMessage', function(message){
+    var li = jQuery('<li></li>');
+    var a = jQuery('<a target="_blank">My Current Location</a>');
+    li.text(`${message.from}:`);
+    a.attr('href', message.url);
+    li.append(a);
+    jQuery('#messages').append(li)
+})
 
