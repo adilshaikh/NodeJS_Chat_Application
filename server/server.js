@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
+const {messageGenerator} = require('./utils/message');
 const port = process.env.PORT || 3000;
 
 var publicPath = path.join(__dirname, '../public')
@@ -14,22 +15,21 @@ var io = socketIO(server)
 
 app.use(express.static(publicPath))
 
+
+
 io.on('connection', (socket)=>{    //.on('event', callbackFunction)
     console.log('New User Connected')
 
-    socket.on('disconnect', ()=>{
-        console.log('Client Disconnected')
-    })
+    socket.emit('newMessage',messageGenerator('Admin', 'Welocome to the Chat APP'))
+
+    socket.broadcast.emit('newMessage',messageGenerator('Admin', 'New User joined the chat APP'))
 
    
 
-    socket.on('createMessage',function(message){
-        console.log('Created Message', message)
-        io.emit('newMessage',{
-             from: message.from,
-             text: message.text,
-             createdAt: new Date().getTime()
-        })
+    socket.on('createMessage',function(message, callback){
+        console.log('Message Created', message)
+        io.emit('newMessage',messageGenerator( message.from, message.text))
+        callback('This is an acknowledgement');
     })
 
     
