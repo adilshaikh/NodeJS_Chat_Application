@@ -29,7 +29,7 @@ io.on('connection', (socket)=>{    //.on('event', callbackFunction)
     socket.on('createMessage',function(message, callback){
         console.log('Message Created', message)
         io.emit('newMessage',messageGenerator( message.from, message.text))
-        callback('This is an acknowledgement');
+        callback();
 
         socket.on('createLocation' ,(coords)=>{
             io.emit('newLocMessage', locationMessageGenerator('User', coords.latitude ,coords.longitude))
