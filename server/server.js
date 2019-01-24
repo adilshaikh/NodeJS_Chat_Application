@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
+const moment = require('moment');
 const {messageGenerator, locationMessageGenerator} = require('./utils/message');
 const port = process.env.PORT || 3000;
 
