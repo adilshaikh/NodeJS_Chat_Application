@@ -10,14 +10,14 @@
         <div id="users"></div>
     </div>
     <div class="chat__main">
-            <ol id="messages" class="chat_messages"></ol>
+            <ol id="messages" class="chat__messages"></ol>
 
             <div class="chat__footer">
                     <form id="message-form">
                             <input type="text" name="message" placeholder="Message"></input>
                             <button class="btn btn-primary">Send</button>
-                         </form>
-                         <button id="send-location">Send Location</button>
+                                                     </form>
+                                                     <button id="send-location">Send Location</button>
             </div>
             
     
@@ -36,7 +36,7 @@
    </script>
 
     <script id="location-template" type="text/template">
-        <ol class="Message">
+        <ol class="message">
             <div class="message__title">
                 <h4>{{from}}</h4>
                 <span>{{createdAt}}</span>

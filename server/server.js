@@ -32,12 +32,12 @@ io.on('connection', (socket)=>{    //.on('event', callbackFunction)
         io.emit('newMessage',messageGenerator( message.from, message.text))
         callback();
 
-        socket.on('createLocation' ,(coords)=>{
-            io.emit('newLocMessage', locationMessageGenerator('User', coords.latitude ,coords.longitude))
-        })
+       
     })
 
-    
+    socket.on('createLocation' ,(coords)=>{
+        io.emit('newLocMessage', locationMessageGenerator('User', coords.latitude ,coords.longitude))
+    })
 })
 
 server.listen(port, ()=>{
