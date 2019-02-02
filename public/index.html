@@ -1,32 +1,27 @@
-<html lang="en">
-<head>
-        <link rel="stylesheet" href="/css/styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JOIN | ChatApp</title>
-</head>
-<body>
-    <div class="centered-form">
-        <div class="centered-form__form">
-            <form action="/chat.html">
-                    <div class= "form-field">
-                            <h3>Join A Chat</h3>
-                        </div>
-                        <div class= "form-field">
-                            <label> User-Name</label>
-                            <input type="text" autofocus></input>
-                        </div>
-                        <div class= "form-field">
-                            <label >Group-Name</label>
-                            <input type="text"/>
-                        </div>
-                        <div class= "form-field">
-                            <button>JOIN</button>
-                        </div>
-            </form>
-         
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Join | ChatApp</title>
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+  <body class="centered-form">
+    <div class="centered-form__form">
+      <form action="/chat.html">
+        <div class="form-field"><h3>Join a Chat</h3></div>
+        <div class="form-field">
+          <label>User Name</label>
+          <input type="text" name="name" autofocus  required/>
         </div>
+        <div class="form-field">
+          <label>Group Name</label>
+          <input type="text" name="room"  required/>
+        </div>
+        <div class="form-field">
+          <button>JOIN</button>
+        </div>
+      </form>
     </div>
-</body>
+  </body>
 </html>
